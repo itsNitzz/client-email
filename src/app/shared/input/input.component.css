@@ -1,0 +1,9 @@
+.field input {
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.pointing.basic {
+  position: relative;
+  top: -1.1rem;
+}

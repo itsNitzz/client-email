@@ -1,0 +1,33 @@
+<h3>Sign In</h3>
+<form
+  (ngSubmit)="onSubmitSigninForm()"
+  [formGroup]="signinForm"
+  class="ui form"
+>
+  <app-input
+    label="Username"
+    [control]="$any(signinForm.get('username'))"
+  ></app-input>
+  <app-input
+    type="password"
+    label="Password"
+    [control]="$any(signinForm.get('password'))"
+  ></app-input>
+  <div>
+    <div *ngIf="signinForm.errors">
+      <div
+        *ngIf="signinForm.errors['invalidCredentials']"
+        class="ui red basic label"
+      >
+        Invalid Credentials
+      </div>
+    </div>
+    <button
+      [disabled]="signinForm.invalid"
+      type="submit"
+      class="ui submit button primary"
+    >
+      Sign in
+    </button>
+  </div>
+</form>

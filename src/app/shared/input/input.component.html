@@ -1,0 +1,31 @@
+<div class="field">
+  <label>{{ label }}</label>
+  <input
+    *ngIf="controlType === 'input'"
+    [formControl]="control"
+    [type]="type"
+  />
+
+  <textarea
+    *ngIf="controlType === 'textArea'"
+    [formControl]="control"
+    [cols]="cols"
+    [rows]="rows"
+  ></textarea>
+</div>
+<div class="ui pointing red basic label" *ngIf="getErrors()">
+  <p *ngIf="control.hasError('required')">Input is required</p>
+  <p *ngIf="control.hasError('usernameAlreadyExist')">
+    This username is already taken, please use a different one.
+  </p>
+  <p *ngIf="control.hasError('email')">Enter a valid email</p>
+  <p *ngIf="control.hasError('minlength')">
+    Minimum length required is
+    {{control.errors?.['minlength']?.requiredLength}} but the actual length is
+    {{control.errors?.['minlength']?.actualLength}}
+  </p>
+  <p *ngIf="control.hasError('pattern')">
+    Invalid format(username should only contain lowercase letters and numbers)
+  </p>
+  <p *ngIf="control.hasError('noConnection')">No connection available.</p>
+</div>

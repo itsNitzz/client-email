@@ -1,0 +1,18 @@
+.actions:empty {
+  display: none;
+}
+
+.actions-default {
+  display: none;
+}
+
+.actions:empty + .actions-default {
+  display: block;
+}
+
+.close.icon {
+  color: black;
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+}

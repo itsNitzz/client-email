@@ -1,0 +1,16 @@
+<section>
+  <div>
+    <h3 class="ui header">{{ emailData.subject }}</h3>
+    <p>
+      From: <i>{{ emailData.from }}</i>
+    </p>
+    <p>
+      To: <i>{{ emailData.to }}</i>
+    </p>
+  </div>
+  <div>
+    <app-email-reply [email]="emailData"></app-email-reply>
+  </div>
+</section>
+<div class="ui divider"></div>
+<div class="ui content" [innerHTML]="emailData.html"></div>

@@ -1,0 +1,48 @@
+<div class="ui container">
+  <h3>Create an account</h3>
+  <form
+    (ngSubmit)="onSubmitSignupForm()"
+    [formGroup]="signupForm"
+    class="ui form"
+  >
+    <app-input
+      label="Username"
+      [control]="$any(signupForm.get('username'))"
+    ></app-input>
+    <app-input
+      type="password"
+      label="Password"
+      [control]="$any(signupForm.get('password'))"
+    ></app-input>
+    <app-input
+      label="Confirm Password"
+      type="password"
+      [control]="$any(signupForm.get('cnfrmPassword'))"
+    ></app-input>
+
+    <div
+      *ngIf="signupForm.touched && signupForm.dirty && signupForm.errors"
+      class="ui red basic label pointing"
+    >
+      <p *ngIf="signupForm.hasError('passNotMatch')">
+        Password is not matching
+      </p>
+      <p *ngIf="signupForm.hasError('noConnection')">
+        No internet connection, failed to signup
+      </p>
+      <p *ngIf="signupForm.hasError('unknownError')">
+        Something went wrong, please try again later
+      </p>
+    </div>
+
+    <div>
+      <button
+        [disabled]="signupForm.invalid || signupForm.pending"
+        type="submit"
+        class="ui submit button primary"
+      >
+        Sign up
+      </button>
+    </div>
+  </form>
+</div>
